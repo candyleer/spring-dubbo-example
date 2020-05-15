@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spring-cloud-provider
+dubbo:
+  scan:
+    base-packages:  io.github.candyleer.springdubboprovider
+  protocol:
+    name: dubbo
+    port: 20880
+  registry:
+    address: zookeeper://zk-0.zk-hs.default.svc.cluster.local:2181

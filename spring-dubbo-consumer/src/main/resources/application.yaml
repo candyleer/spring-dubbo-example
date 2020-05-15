@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: spring-dubbo-consumer
+dubbo:
+  registry:
+    address: zookeeper://zk-0.zk-hs.default.svc.cluster.local:2181
+server:
+  port: 8080
