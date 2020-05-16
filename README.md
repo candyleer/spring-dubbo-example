@@ -1,5 +1,5 @@
 # spring-dubbo-example
-simple example
+![](./image.jpg)
 ## Build
 ```bash
 mvn clean package -DskipTests
