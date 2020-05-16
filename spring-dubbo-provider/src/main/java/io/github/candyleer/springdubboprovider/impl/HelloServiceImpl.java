@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Map;
 
-@Service
+@Service(filter = "prometheus-provider")
 @org.springframework.stereotype.Service
 public class HelloServiceImpl implements HelloService {
 

@@ -11,7 +11,7 @@ import java.util.Map;
 @RestController
 public class HelloController {
 
-    @Reference
+    @Reference(filter = "prometheus-consumer")
     private HelloService helloService;
 
     @RequestMapping("hello")

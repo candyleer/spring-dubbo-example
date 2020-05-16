@@ -1,0 +1,1 @@
+prometheus-provider=io.github.candyleer.springdubboprovider.filter.ProviderPrometheusFilter

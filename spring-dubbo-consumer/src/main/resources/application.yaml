@@ -6,3 +6,11 @@ dubbo:
     address: zookeeper://zk-0.zk-hs.default.svc.cluster.local:2181
 server:
   port: 8080
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
