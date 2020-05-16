@@ -1,5 +1,7 @@
 # spring-dubbo-example
 ![](./image.jpg)
+链路追踪
+![](./trace.jpg)
 ## Build
 ```bash
 mvn clean package -DskipTests
@@ -53,5 +55,14 @@ dubbo_consumer_seconds_max{method="hello",service="io.github.candyleer.springdub
 dubbo_consumer_seconds_count{method="hello",service="io.github.candyleer.springdubboapi.HelloService",} 21.0
 dubbo_consumer_seconds_sum{method="hello",service="io.github.candyleer.springdubboapi.HelloService",} 0.69077555
 
+```
+## 开启和关闭 metric 和 tracing
+```
+1.提供方
+@Service(filter = {"prometheus-provider", "jaeger-tracing"})
+2.消费方
+ @Reference(filter = {"prometheus-consumer", "jaeger-tracing"})
+
+去掉 filter 就是去掉对应监控
 ```
 
