@@ -73,13 +73,14 @@ items:
       ports:
         - name: query-http
           port: 80
-          nodePort: 30001
+          #          nodePort: 30001
           protocol: TCP
           targetPort: 16686
       selector:
         app.kubernetes.io/name: jaeger
         app.kubernetes.io/component: all-in-one
-      type: NodePort
+      type: LoadBalancer
+  #      type: NodePort
   - apiVersion: v1
     kind: Service
     metadata:
