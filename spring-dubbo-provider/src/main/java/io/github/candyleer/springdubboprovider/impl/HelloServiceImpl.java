@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Map;
 
-@Service(filter = "prometheus-provider")
+@Service(filter = {"prometheus-provider", "jaeger-tracing"})
 @org.springframework.stereotype.Service
 public class HelloServiceImpl implements HelloService {
 
@@ -16,8 +16,8 @@ public class HelloServiceImpl implements HelloService {
     private String applicationName;
 
     @Override
-    public Map<String, Object> hello() {
-        Map<String, Object> objectAttachments = RpcContext.getContext().getObjectAttachments();
+    public Map<String, String> hello() {
+        Map<String, String> objectAttachments = RpcContext.getContext().getAttachments();
         objectAttachments.put("provider.name", applicationName);
         objectAttachments.put("provider.ip", NetUtils.getLocalHost());
         return objectAttachments;

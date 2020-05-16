@@ -1,0 +1,3 @@
+prometheus-provider=io.github.candyleer.springdubbotracing.filter.dubbo.ProviderPrometheusFilter
+prometheus-consumer=io.github.candyleer.springdubbotracing.filter.dubbo.ConsumerPrometheusFilter
+jaeger-tracing=io.github.candyleer.springdubbotracing.filter.dubbo.DubboTracingFilter

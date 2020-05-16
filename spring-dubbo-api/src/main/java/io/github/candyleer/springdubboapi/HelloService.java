@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface HelloService {
 
-    Map<String, Object> hello();
+    Map<String, String> hello();
 }

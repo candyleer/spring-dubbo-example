@@ -11,12 +11,11 @@ import java.util.Map;
 @RestController
 public class HelloController {
 
-    @Reference(filter = "prometheus-consumer")
+    @Reference(filter = {"prometheus-consumer", "jaeger-tracing"})
     private HelloService helloService;
 
     @RequestMapping("hello")
-    public Map<String, Object> hello() {
-
+    public Map<String, String> hello() {
         return helloService.hello();
     }
 }
