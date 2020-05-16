@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: spring-dubbo-consumer
-          image: candyleer/spring-dubbo-consumer:v1
+          image: candyleer/spring-dubbo-consumer:v2
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 5

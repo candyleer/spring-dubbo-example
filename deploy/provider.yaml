@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: spring-dubbo-provider
-          image: candyleer/spring-dubbo-provider:v1
+          image: candyleer/spring-dubbo-provider:v2
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 5
