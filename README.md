@@ -22,6 +22,8 @@ docker push candyleer/spring-dubbo-consumer:v2
 
 ## Deploy
 ```bash
+# 部署 jaeger
+kubectl apply -f deploy/jaeger-all-in-one-template.yml
 # 部署 zookeeper 3个节点
 kubectl apply -f deploy/zookeeper.yaml
 # 部署 provider 5个节点
