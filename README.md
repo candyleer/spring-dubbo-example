@@ -6,6 +6,8 @@
 ```bash
 mvn clean package -DskipTests
 ```
+## Change Log
+* v3 提供了参数控制 开启和关闭监控的能力。
 
 ## Docker Build
 ```bash
@@ -14,7 +16,7 @@ docker build -t candyleer/spring-dubbo-consumer:v3 -f spring-dubbo-consumer/Dock
 
 ```
 
-## docker Push
+## Docker Push
 ```bash
 docker push candyleer/spring-dubbo-provider:v3
 docker push candyleer/spring-dubbo-consumer:v3
@@ -33,7 +35,12 @@ kubectl apply -f deploy/consumer.yaml
 
 访问 http://<consumer pod ip>:8080/hello 测试是否通
 ```
-## Monitor
+## Monitor (Prometheus and Jaeger tracing)
+
+`--dubbo.monitor.skip=false` 默认开启 prometheus 和 tracing 监控，如果需要关闭，则设置为 true
+
+参数可以在 deployment 中修改。
+#### Prometheus 
 ```bash
 #路径
 /actuator/prometheus
@@ -58,13 +65,10 @@ dubbo_consumer_seconds_count{method="hello",service="io.github.candyleer.springd
 dubbo_consumer_seconds_sum{method="hello",service="io.github.candyleer.springdubboapi.HelloService",} 0.69077555
 
 ```
-## 开启和关闭 metric 和 tracing
-```
-1.提供方
-@Service(filter = {"prometheus-provider", "jaeger-tracing"})
-2.消费方
- @Reference(filter = {"prometheus-consumer", "jaeger-tracing"})
 
-去掉 filter 就是去掉对应监控
-```
+#### Jaeger Tracing
+
+可以通过启动参数控制采样率，目前提供的参数有：
+
+`--jaeger.agent.sampler.ratio=1` 控制 tracing 的采样率，有效值 0-1，旨在监控开始（即`--dubbo.monitor.skip=false`）时候有效。
 
