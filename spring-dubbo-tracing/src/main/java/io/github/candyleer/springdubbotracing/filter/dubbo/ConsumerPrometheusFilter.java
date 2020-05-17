@@ -20,6 +20,7 @@ public class ConsumerPrometheusFilter implements Filter {
 
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
+
         String interfaceName = invoker.getInterface().getCanonicalName();
         String methodName = invocation.getMethodName();
         Timer.Sample sample = Timer.start(METRICS);

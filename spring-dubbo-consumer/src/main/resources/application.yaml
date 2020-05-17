@@ -4,6 +4,8 @@ spring:
 dubbo:
   registry:
     address: zookeeper://zk-0.zk-hs.default.svc.cluster.local:2181
+  monitor:
+    skip: false
 server:
   port: 8080
 management:
@@ -17,3 +19,5 @@ management:
 jaeger:
   agent:
     host: jaeger-agent
+  sampler:
+    ratio: 1

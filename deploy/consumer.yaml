@@ -34,8 +34,11 @@ spec:
     spec:
       containers:
         - name: spring-dubbo-consumer
-          image: candyleer/spring-dubbo-consumer:v2
+          image: candyleer/spring-dubbo-consumer:v3
           imagePullPolicy: Always
+          args:
+            - "--dubbo.monitor.skip=false"
+            - "--jaeger.agent.sampler.ratio=1"
           livenessProbe:
             failureThreshold: 5
             httpGet:

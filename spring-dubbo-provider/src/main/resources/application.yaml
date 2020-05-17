@@ -2,13 +2,17 @@ spring:
   application:
     name: spring-cloud-provider
 dubbo:
-  scan:
-    base-packages:  io.github.candyleer.springdubboprovider
+  application:
+    logger: slf4j
   protocol:
     name: dubbo
     port: 20880
   registry:
     address: zookeeper://zk-0.zk-hs.default.svc.cluster.local:2181
+  monitor:
+    skip: false
+#  scan:
+#    base-packages: io.github.candyleer.springdubboprovider
 management:
   endpoints:
     web:
@@ -21,3 +25,5 @@ management:
 jaeger:
   agent:
     host: jaeger-agent
+    sampler:
+      ratio: 1

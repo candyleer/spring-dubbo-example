@@ -2,7 +2,7 @@ package io.github.candyleer.springdubbotracing;
 
 import io.jaegertracing.internal.JaegerTracer;
 import io.jaegertracing.internal.reporters.RemoteReporter;
-import io.jaegertracing.internal.samplers.ConstSampler;
+import io.jaegertracing.internal.samplers.ProbabilisticSampler;
 import io.jaegertracing.spi.Sampler;
 import io.jaegertracing.spi.Sender;
 import io.jaegertracing.thrift.internal.senders.UdpSender;
@@ -18,6 +18,8 @@ public class TracingInitializer implements InitializingBean {
     @Value("${jaeger.agent.host}")
     private String jaegerAgentHost;
 
+    @Value("${jaeger.agent.sampler.ratio}")
+    private Double samplerRatio;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -27,9 +29,9 @@ public class TracingInitializer implements InitializingBean {
                 .withSender(sender)
                 .build();
 
-//        final Sampler sampler = new ProbabilisticSampler(0.01);
+        final Sampler sampler = new ProbabilisticSampler(samplerRatio);
 
-        final Sampler sampler = new ConstSampler(true);
+//        final Sampler sampler = new ConstSampler(true);
 
         final JaegerTracer jaegerTracer = new JaegerTracer
                 .Builder(applicationName)

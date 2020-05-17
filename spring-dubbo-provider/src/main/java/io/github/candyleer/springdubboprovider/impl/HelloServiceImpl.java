@@ -2,14 +2,13 @@ package io.github.candyleer.springdubboprovider.impl;
 
 import io.github.candyleer.springdubboapi.HelloService;
 import org.apache.dubbo.common.utils.NetUtils;
-import org.apache.dubbo.config.annotation.Service;
 import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-@Service(filter = {"prometheus-provider", "jaeger-tracing"})
-@org.springframework.stereotype.Service
+@Service
 public class HelloServiceImpl implements HelloService {
 
     @Value("${spring.application.name}")
