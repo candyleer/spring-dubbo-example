@@ -7,7 +7,9 @@
 mvn clean package -DskipTests
 ```
 ## Change Log
-* v3 提供了参数控制 开启和关闭监控的能力。
+ * v3 提供了参数控制 开启和关闭监控的能力。
+ * v2 提供 prometheus 和 tracing 功能.
+ * v1 默认版本。
 
 ## Docker Build
 ```bash
