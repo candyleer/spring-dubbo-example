@@ -70,5 +70,5 @@ dubbo_consumer_seconds_sum{method="hello",service="io.github.candyleer.springdub
 
 可以通过启动参数控制采样率，目前提供的参数有：
 
-`--jaeger.agent.sampler.ratio=1` 控制 tracing 的采样率，有效值 0-1，旨在监控开始（即`--dubbo.monitor.skip=false`）时候有效。
+`--jaeger.agent.sampler.ratio=1` 控制 tracing 的采样率，有效值 0-1，只在监控开启（即`--dubbo.monitor.skip=false`）的时候有效。
 
