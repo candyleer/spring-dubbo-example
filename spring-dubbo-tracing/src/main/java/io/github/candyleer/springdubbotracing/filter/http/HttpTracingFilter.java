@@ -33,6 +33,10 @@ public class HttpTracingFilter implements javax.servlet.Filter {
         Span span = null;
         HttpServletRequest request = ((HttpServletRequest) servletRequest);
         HttpServletResponse response = ((HttpServletResponse) servletResponse);
+        if (request.getRequestURI().startsWith("/direct/")) {
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
+        }
         try {
             Tracer tracer = GlobalTracer.get();
             Enumeration<String> headerNames = request.getHeaderNames();

@@ -1,5 +1,6 @@
 package io.github.candyleer.springdubboprovider;
 
+import io.github.candyleer.springdubboapi.DirectHelloService;
 import io.github.candyleer.springdubboapi.HelloService;
 import org.apache.dubbo.config.spring.ServiceBean;
 import org.slf4j.Logger;
@@ -27,6 +28,16 @@ public class DubboConfig {
         } else {
             serviceBean.setFilter("-prometheus-provider,-jaeger-tracing");
         }
+        return serviceBean;
+    }
+
+
+    @Bean
+    public ServiceBean<DirectHelloService> directHelloServiceServiceBean(DirectHelloService directHelloService) {
+        ServiceBean<DirectHelloService> serviceBean = new ServiceBean<>();
+        serviceBean.setInterface(DirectHelloService.class.getName());
+        serviceBean.setRef(directHelloService);
+        serviceBean.setFilter("-prometheus-provider,-jaeger-tracing");
         return serviceBean;
     }
 }
