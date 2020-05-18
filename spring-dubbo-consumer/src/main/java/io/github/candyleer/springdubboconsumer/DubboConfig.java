@@ -24,6 +24,8 @@ public class DubboConfig {
         LOGGER.info("[DubboConfig] --dubbo.monitor.skip:{}", skip);
         if (!skip) {
             referenceBean.setFilter("prometheus-consumer,jaeger-tracing");
+        } else {
+            referenceBean.setFilter("-prometheus-consumer,-jaeger-tracing");
         }
         return referenceBean;
     }

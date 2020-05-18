@@ -10,7 +10,7 @@ dubbo:
   registry:
     address: zookeeper://zk-0.zk-hs.default.svc.cluster.local:2181
   monitor:
-    skip: true
+    skip: false
 #  scan:
 #    base-packages: io.github.candyleer.springdubboprovider
 management:

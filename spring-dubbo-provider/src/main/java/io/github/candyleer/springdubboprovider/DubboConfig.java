@@ -24,6 +24,8 @@ public class DubboConfig {
         LOGGER.info("[DubboConfig] --dubbo.monitor.skip:{}", skip);
         if (!skip) {
             serviceBean.setFilter("prometheus-provider,jaeger-tracing");
+        } else {
+            serviceBean.setFilter("-prometheus-provider,-jaeger-tracing");
         }
         return serviceBean;
     }
