@@ -80,3 +80,7 @@ dubbo_consumer_seconds_sum{method="hello",service="io.github.candyleer.springdub
 
 `--jaeger.agent.sampler.ratio=1` 控制 tracing 的采样率，有效值 0-1，只在监控开启（即`--dubbo.monitor.skip=false`）的时候有效。
 
+## Conclusion
+1. /hello 如果 `--dubbo.monitor.skip=false`，则开启了 prometheus 和 tracing,并且可以通过`--jaeger.agent.sampler.ratio=1`调节采样率。
+2. /hello 如果 `--dubbo.monitor.skip=true`,则关闭了 prometheus 和 tracing 监控。
+3. /direct/hello 直连 provider,任何情况下都没有prometheus和 tracing。
