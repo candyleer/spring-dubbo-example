@@ -2,6 +2,11 @@
 ![](./image.jpg)
 链路追踪
 ![](./trace.jpg)
+## URI
+项目中包含两个 url:
+1. /hello 调用 RPC，通过注册中心自动发现 provider,可以控制是否开启监控
+2. /direct/hello 直连 provider,任何情况下都没有监控和 tracing。
+
 ## Build
 ```bash
 mvn clean package -DskipTests
