@@ -1,6 +1,16 @@
 spring:
   application:
     name: spring-cloud-provider
+  datasource:
+    hikari:
+      maximumPoolSize: 10
+      minimumIdle: 2
+      idleTimeout: 60000
+      connectionTimeout: 3000
+      maxLifetime: 180000
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password:
 dubbo:
   application:
     logger: slf4j
@@ -27,3 +37,5 @@ jaeger:
     host: jaeger-agent
     sampler:
       ratio: 1
+
+
